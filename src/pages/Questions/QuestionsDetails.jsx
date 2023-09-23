@@ -5,13 +5,16 @@ import { useState } from "react";
 import moment from "moment";
 import copy from "copy-to-clipboard";
 
-
 import upvotes from "../../assets/sort-up.svg";
 import downvotes from "../../assets/sort-down.svg";
 import "./Question.css";
 import Avatar from "../../components/Avatar/Avatar";
 import DisplayAnswer from "./DisplayAnswer";
-import { postAnswer, deleteQuestion, voteQuestion } from "../../actions/question";
+import {
+  postAnswer,
+  deleteQuestion,
+  voteQuestion,
+} from "../../actions/question";
 
 const QuestionsDetails = () => {
   const { id } = useParams();
@@ -64,12 +67,12 @@ const QuestionsDetails = () => {
   };
 
   const handleUpvote = () => {
-    dispatch(voteQuestion(id, 'upVote', User.result._id))
-  }
+    dispatch(voteQuestion(id, "upVote", User.result._id));
+  };
 
   const handleDownvote = () => {
-    dispatch(voteQuestion(id, 'downVote', User.result._id))
-  }
+    dispatch(voteQuestion(id, "downVote", User.result._id));
+  };
 
   return (
     <div className="question-details-page">
@@ -89,18 +92,21 @@ const QuestionsDetails = () => {
                         src={upvotes}
                         alt=""
                         width="18"
-                        className="votes-icon" onClick={handleUpvote}
+                        className="votes-icon"
+                        onClick={handleUpvote}
                       />
-                      <p>{question.upVotes.length - question.downVotes.length}</p>
+                      <p>
+                        {question.upVotes.length - question.downVotes.length}
+                      </p>
                       <img
                         src={downvotes}
                         alt=""
                         width="18"
-                        className="votes-icon" onClick={handleDownvote}
+                        className="votes-icon"
+                        onClick={handleDownvote}
                       />
                     </div>
 
-                    
                     <div style={{ width: "100%" }}>
                       <p className="question-body">{question.questionBody}</p>
                       <div className="question-details-tags">
@@ -108,7 +114,6 @@ const QuestionsDetails = () => {
                           <p key={tag}>{tag}</p>
                         ))}
                       </div>
-
 
                       <div className="question-actions-user">
                         <div>
@@ -190,7 +195,7 @@ const QuestionsDetails = () => {
                       to="/AskQuestions"
                       style={{ textDecoration: "none", color: "#009dff" }}
                     >
-                      ask your own question.
+                      &nbsp; ask your own question.
                     </Link>
                   </p>
                 </section>

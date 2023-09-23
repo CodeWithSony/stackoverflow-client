@@ -1,14 +1,17 @@
-import React from "react";
-import "./App.css";
+import React, { useState } from "react";
+// api key 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
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-
 import { BrowserRouter as Router } from "react-router-dom";
+
+import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Alroutes from "./Alroutes";
 
 import { fetchAllQuestions } from "./actions/question";
 import { fetchAllUsers } from "./actions/users";
+
+// import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 
 function App() {
   // whenever our app is live useEffect will gonna run useEffect and the function which will come inside it
@@ -25,15 +28,22 @@ function App() {
   // means we have retrieve the data from the backend and stored it in the frontend
   //now in order to access data we gonna use useSelector hook for it
 
+
+
   return (
     <div className="App">
       <Router>
         <Navbar></Navbar>
-
+  
         <Alroutes />
       </Router>
+  
+   
     </div>
   );
 }
+
+    
+
 
 export default App;

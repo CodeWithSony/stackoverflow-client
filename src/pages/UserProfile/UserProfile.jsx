@@ -10,16 +10,22 @@ import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import Avatar from "../../components/Avatar/Avatar";
 import EditProfileForm from "./EditProfileForm";
 import ProfileBio from "./ProfileBio";
+import Location from "./Location";
+// import ShowMapBtn from "./ShowMapBtn";
 
 const UserProfile = () => {
   const { id } = useParams();
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
-
+  
   const currentUser = useSelector((state) => state.currentUserReducer);
-
+  
   const [Switch, setSwitch] = useState(false);
-
+  
+  const [location, setLocation] = useState(false);
+  const showLocation = () => {
+    setLocation(!location);
+  }
   return (
     <div className="home-container-1">
       <LeftSidebar></LeftSidebar>
@@ -44,6 +50,7 @@ const UserProfile = () => {
                   Joined {moment(currentProfile?.JoinedOn).fromNow()}
                 </p>
               </div>
+          
             </div>
             {currentUser?.result._id === id && (
               <button
@@ -70,6 +77,11 @@ const UserProfile = () => {
               <ProfileBio currentProfile={currentProfile} />
             )}
           </>
+
+          <button className="show-location" onClick={showLocation}>Show location</button>
+          {/* <Location/> */}
+    {location ? <Location/> :  null}
+
         </section>
       </div>
     </div>

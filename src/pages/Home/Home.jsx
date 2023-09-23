@@ -3,6 +3,7 @@ import React from 'react'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import HomeMainBar from '../../components/HomeMainBar/HomeMainBar'
 import RightSideBar from '../../components/RightSideBar/RightSideBar'
+// @import url(~react-responsive-ui/small-screen/Snackbar.css) (max-width: 768px)
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
     <div className="home-container-2">
    <HomeMainBar />
    <RightSideBar />
+  
     </div>
   </div>
   )

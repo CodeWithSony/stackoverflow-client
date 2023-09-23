@@ -13,7 +13,7 @@ const Questions = ({ question }) => {
         </div>
       </div>
       <div className="display-votes-ans">
-        <p>{question.noOfAnswers}</p>
+        <p>{question.answer.length}</p>
         <p>answers</p>
       </div>
 
