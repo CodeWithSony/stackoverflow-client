@@ -41,13 +41,20 @@ const LeftSidebar = () => {
             <p>Users</p>
           </NavLink>
           <NavLink
-            to="/Chatbot"
+            to="/Count"
             className="side-nav-link"
             activeclass="active"
             style={{ paddingLeft: "40px" }}
           >
-            <p>Chatbot</p>
+            {/* <p>Count</p> */}
           </NavLink>
+           <NavLink to = "/Multilanguage"
+          className="side-nav-link"
+          activeclass="active" 
+          style={{paddingLeft: "40px"}}
+          >
+            <p>Multilanguage</p>
+        </NavLink>
         </div>
       </nav>
     </div>

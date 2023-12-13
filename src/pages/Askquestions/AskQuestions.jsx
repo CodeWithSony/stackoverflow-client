@@ -12,22 +12,19 @@ import { askQuestion } from "../../actions/question";
 
 const AskQuestions = () => {
   const [questionTitle, setQuestionTitle] = useState("");
-
   const [questionBody, setQuestionBody] = useState("");
   const [questionTags, setQuestionTags] = useState("");
 
   // we are getting the data from above and passing the data to the dispatch
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
-
   const navigate = useNavigate();
-
   const handleSubmit = (e) => {
     // we defined it inside form
     e.preventDefault();
 
     if (User) {
-      console.log(User);
+      // console.log(User, "its user");
       if (questionTitle && questionBody && questionTags) {
         dispatch(
           askQuestion(
@@ -43,21 +40,7 @@ const AskQuestions = () => {
         );
       }
     }
-
-    // we are passing it to the action's index.js
-
-    // navigate for home page going
-    // i think User inside models
-    // in dispatch we have to write some function
   };
-
-  // const handleEnter = (e) => {
-  //   if (e.key === "Enter") {
-  //     setQuestionBody(questionBody + "\n");
-  //     // \n for new line
-  //   }
-  //   console.log();
-  // };
 
   return (
     <div className="ask-question">

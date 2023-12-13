@@ -14,13 +14,15 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSwitch = () => {
-    setIsSignUp(!isSignUp);
-  };
+
 
   const dispatch = useDispatch();
   // dispatch is a function of the Redux store. You call store.dispatch to dispatch an action. This is the only way to trigger a state change.
   const navigate = useNavigate();
+  const handleSwitch = () => {
+    setIsSignUp(!isSignUp);
+  };
+
 
   const handlerSubmit = (e) => {
     e.preventDefault();
@@ -32,15 +34,13 @@ const Auth = () => {
       if (!name) {
         alert("Enter a name...");
       }
-      console.log(name, email, password);
+      // console.log(name, email, password);
       dispatch(signup({ name, email, password }, navigate));
       // Dispatch basically triggers the action
       // And action is responsible for changing the state of application (means adding, removing or updating the data of application)
     } else {
       dispatch(login({ email, password }, navigate));
     }
-
-    // console.log({ name, email, password });
   };
 
   return (
@@ -135,5 +135,3 @@ const Auth = () => {
 };
 
 export default Auth;
-
-// 25:34 revise

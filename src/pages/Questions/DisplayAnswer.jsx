@@ -9,7 +9,7 @@ const DisplayAnswer = ({ question, handlShare }) => {
   const User = useSelector((state) => state.currentUserReducer);
   const dispatch = useDispatch();
   const { id } = useParams();
-
+  
 
   const handleDelete = (answerId, noOfAnswers) => {
     dispatch(deleteAnswer(id, answerId, noOfAnswers-1))

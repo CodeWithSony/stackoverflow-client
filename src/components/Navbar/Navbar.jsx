@@ -3,8 +3,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import decode from 'jwt-decode'
-
+import decode from "jwt-decode";
 
 import logo from "../../assets/logo.png";
 import search from "../../assets/magnifying-glass-solid.svg";
@@ -36,27 +35,29 @@ const Navbar = () => {
   const Navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch({type: 'LOGOUT'});
-    Navigate('/');
+    dispatch({ type: "LOGOUT" });
+    Navigate("/");
     dispatch(setCurrentUser(null));
-  }
+  };
 
-  useEffect(()=>{
-    const token = user?.token
-    if(token){
+  useEffect(() => {
+    const token = user?.token;
+    if (token) {
       const decodeToken = decode(token);
-      if(decodeToken.exp * 1000 < new Date().getTime()){
+      if (decodeToken.exp * 1000 < new Date().getTime()) {
         handleLogout();
       }
     }
-  })
+  });
+
+  //
 
   return (
     <nav className="main-nav">
       <div className="navbar">
         <Link to="/" className="nav-logo nav-item">
           <img src={logo} alt="logo" />
-          </Link>
+        </Link>
         <Link to="/" className="nav-btn nav-item">
           About
         </Link>
@@ -66,14 +67,13 @@ const Navbar = () => {
         <Link to="/" className="nav-btn nav-item">
           For Teams
         </Link>
-        {/* edited */}
-      
+        <div id="google_translate_element"></div>
+
         <form>
           <input type="text" name="" id="" placeholder="Search..." />
           <img src={search} alt="search" width="18" className="search-icon" />
         </form>
-   
-   
+
         {user === null ? (
           <Link to="/Auth" className="nav-item navLinks">
             Log in
@@ -89,10 +89,17 @@ const Navbar = () => {
               mx="10px"
               textDecoration="none"
             >
-              <Link to= {`/users/${user.result._id}`}  style={{textDecoration: "none"}} >{user.result.name.charAt(0).toUpperCase()} </Link>
+              <Link
+                to={`/users/${user.result._id}`}
+                style={{ textDecoration: "none" }}
+              >
+                {user.result.name.charAt(0).toUpperCase()}{" "}
+              </Link>
             </Avatar>
 
-            <button className="nav-item navLinks" onClick={handleLogout}>Log Out</button>
+            <button className="nav-item navLinks" onClick={handleLogout}>
+              Log Out
+            </button>
           </>
         )}
       </div>

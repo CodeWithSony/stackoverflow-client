@@ -1,18 +1,16 @@
 // import React from "react";
 import * as api from "../api/index";
-
 // we have imported it inside pages askQuestion.jsx
-
 // we will use the askQuestion data
 export const askQuestion = (questionData, navigate) => async (dispatch) => {
   // because we are using thunk we have to use dispatch aslo
-
   try {
     // and willl send to the backend and retrieve it as response and push it to the redux
     const { data } = await api.postQuestion(questionData);
     // we are sending all question data in postQueestion
     dispatch({ type: "POST_QUESTION", payload: data });
-    // after dispatching a question means after posting a question we are calling fetch all the question function which will show all the fetchedquestion after clicking on the that askquestion button and after givng title, body and tags.
+    // after dispatching a question means after posting a question
+    // This action is likely used to update the Redux store with information about the newly posted question.
     dispatch(fetchAllQuestions());
     // so it will be called again.
     // here pushing
@@ -22,15 +20,11 @@ export const askQuestion = (questionData, navigate) => async (dispatch) => {
     console.log(error);
   }
 };
-
-// export default askQuestion
-
 // we are sending this action to the reducer in question.js as their cases matches
-
 export const fetchAllQuestions = () => async (dispatch) => {
   // here we are writing fetchAllquestion to get data from the database by using axios
   // action will come inside diapath(data)
-  console.log("feched data....");
+  // console.log("feched data....");
   try {
     const { data } = await api.getAllQuestions();
     dispatch({ type: "FETCH_ALL_QUESTIONS", payload: data });
@@ -45,7 +39,7 @@ export const deleteQuestion = (id, navigate) => async (dispatch) => {
   try {
     const { data } = api.deleteQuestion(id);
     // Based on the code snippet provided, it seems that the api.deleteQuestion function is expected to return a response that includes data related to the deletion operation. This could be an object containing information such as the ID of the deleted question, a success message, or any other relevant details.
-    console.log(data);
+    // console.log(data);
     dispatch(fetchAllQuestions());
 
     // fetchAllQuestions will get all the data from the databse.
